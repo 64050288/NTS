@@ -46,8 +46,12 @@
                                 <li><a href="#" target="_blank"><i class="fa-brands fa-tiktok"></i></a></li>
                             </ul>
                         </div>
-                        <div class="lang-wrap"><a href="#" class="act-lang">En</a><span>/</span><a href="#">Th</a></div>
-                    </div>
+                        <div id="lang-switcher" class="lang-wrap">
+                            <a class="lang-btn" data-lang="en">En</a>
+                            <span>/</span>
+                            <a class="lang-btn" data-lang="th">Th</a>
+                            </div>
+                        </div>
                     <!--  header-top end  -->					
                     <div class="header-inner init-fix-header">
                         <a href="index.html" class="logo-holder"><img src="images/logo.png" alt=""></a>
@@ -671,7 +675,7 @@
                                                     <li> <span data-i18n-key="footer_nav_contact_Address">Adress :</span><a data-i18n-key="footer_nav_contact_address">Tokyo</a></li>
                                                     <li><span data-i18n-key="footer_nav_contact_Phone">Phone :</span><a data-i18n-key="footer_nav_contact_phone">+2(111)123456789</a></li>
                                                 </ul>
-                                                <a href="contacts.html" class="footer-widget-content-link"><span>Get in Touch</span><i class="fa-solid fa-caret-right"></i></a>	
+                                                <a href="contacts.html" class="footer-widget-content-link"><span data-i18n-key="footer-widget-content-link">Get in Touch</span><i class="fa-solid fa-caret-right"></i></a>	
                                             </div>
                                         </div>
                                     </div>
@@ -774,12 +778,7 @@
                                         <!--tab end -->
                                     </div>
                                     <!--tabs end -->
-                                    <div class="log-separator fl-wrap"><span>or</span></div>
-                                    <div class="soc-log  fl-wrap">
-                                        <p>For faster login or register use your social account.</p>
-                                        <a href="#" class="google_log"><i class="fa-brands fa-google"></i>Connect with Google</a>
-                                        <a href="#" class="fb_log"><i class="fa-brands fa-facebook-f"></i> Connect with Facebook</a>
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -799,5 +798,6 @@
         <script  src="js/jquery.min.js"></script>
         <script  src="js/plugins.js"></script>
         <script  src="js/scripts-copy.js"></script>
+        <script  src="js/i18n.js"></script>
     </body>
 </html>
