@@ -39,7 +39,7 @@
                     <div class="header-top  fl-wrap">
                         
                         <div class="header-social">
-                            <div class="header-social_title">Follow us:</div>
+                            <div class="header-social_title" data-i18n-key="follow_us">Follow us:</div>
                             <ul>
                                 <li><a href="#" target="_blank"><i class="fa-brands fa-facebook-f"></i></a></li>
                                 <li><a href="#" target="_blank"><i class="fa-brands fa-x-twitter"></i></a></li>
@@ -47,8 +47,12 @@
                                 <li><a href="#" target="_blank"><i class="fa-brands fa-tiktok"></i></a></li>
                             </ul>
                         </div>
-                        <div class="lang-wrap"><a href="#" class="act-lang">En</a><span>/</span><a href="#">Th</a></div>
-                        
+                        <div id="lang-switcher" class="lang-wrap">
+                            <a class="lang-btn" data-lang="en">En</a>
+                            <span>/</span>
+                            <a class="lang-btn" data-lang="th">Th</a>
+                            </div>
+                        </div>
                     </div>
                     <!--  header-top end  -->							
                     <div class="header-inner init-fix-header">
@@ -58,19 +62,19 @@
                             <nav>
                                 <ul class="no-list-style">
                                     <li>
-                                        <a href="index.html" class="act-link">หน้าแรก</a>
+                                        <a href="index.html" class="act-link" data-i18n-key="home">หน้าแรก</a>
                                     </li>
                                     <li>
-                                        <a href="about.html">เกี่ยวกับเรา<i class="fa-solid fa-caret-down"></i></a>
+                                        <a href="about.html" data-i18n-key="about_us_nav">เกี่ยวกับเรา<i class="fa-solid fa-caret-down"></i></a>
                                         <!--second level -->   
                                         <ul>
-                                            <li><a href="about.html">เกี่ยวกับเรา</a></li>
-                                            <li><a href="contacts.html">ติดต่อเรา</a></li>
+                                            <li><a href="about.html" data-i18n-key="about_us_subnav">เกี่ยวกับเรา</a></li>
+                                            <li><a href="contacts.html" data-i18n-key="contact_us_subnav">ติดต่อเรา</a></li>
                                         </ul>
                                         <!--second level end-->                                
                                     </li>
                                     <li>
-                                        <a href="listing2.html">เช่ารถ</a>
+                                        <a href="listing2.html" data-i18n-key="rent_car_nav">เช่ารถ</a>
                                     </li>
                                 </ul>
                             </nav>
@@ -83,7 +87,7 @@
                             </div>
                         </div>
                         <!-- nav-button-wrap end-->					
-                        <a href="listing2.html" class="header-btn"><span>เลือกรถที่ถูกใจ</span></a>
+                        <a href="listing2.html" class="header-btn" data-i18n-key="choose_your_car"><span>เลือกรถที่ถูกใจ</span></a>
                         <!-- header-search-wrap  -->	
                         <div class="header-search-wrap novis_search">
                             <div class="header-search">
@@ -95,30 +99,30 @@
                                         <!-- listsearch-input-item -->
                                         <div class="cs-intputwrap">
                                             <i class="fa-light fa-key-skeleton-left-right"></i>
-                                            <input type="text"   placeholder="Keywords..." value="">
+                                            <input type="text"   placeholder="Keywords..." value="" data-i18n-key="search_keywords_placeholder">
                                         </div>
                                         <!-- listsearch-input-item -->									
                                         <div class="cs-intputwrap">
                                             <i class="fa-light fa-car-bus"></i>
                                             <select data-placeholder="All Types" class="chosen-select on-radius no-search-select" >
-                                                <option>All Types</option>
-                                                <option>Sedan</option>
-                                                <option>Hatchback</option>
-                                                <option>Coupe</option>
-                                                <option>Convertible</option>
+                                                <option data-i18n-key="all_types">All Types</option>
+                                                <option data-i18n-key="sedan">Sedan</option>
+                                                <option data-i18n-key="hatchback">Hatchback</option>
+                                                <option data-i18n-key="coupe">Coupe</option>
+                                                <option data-i18n-key="convertible">Convertible</option>
                                             </select>
                                         </div>
                                         <!-- listsearch-input-item -->
                                         <div class="cs-intputwrap">
                                             <div class="price-range-wrap ">
-                                                <label>Price Range</label>
+                                                <label data-i18n-key="price_range">Price Range</label>
                                                 <div class="price-rage-item">
                                                     <input type="text" class="price-range-double" data-min="100" data-max="100000"  name="price-range1"  data-step="1" value="1" data-prefix="$">
                                                 </div>
                                             </div>
                                         </div>
                                         <!-- listsearch-input-item -->										
-                                        <button onclick="window.location.href='listing.html'" class="commentssubmit commentssubmit_fw">Search</button>	
+                                        <button onclick="window.location.href='listing.html'" class="commentssubmit commentssubmit_fw" data-i18n-key="search_button">Search</button>	
                                     </div>
                                 </div>
                             </div>
@@ -127,7 +131,7 @@
                         <!-- header-cart_wrap  -->
                         <div class="header-cart_wrap novis_cart">
                             <div class="header-cart_title">
-                                <div class="header-cart_title-item">Your Wishlist<span><strong>2</strong> items</span></div>
+                                <div class="header-cart_title-item" data-i18n-key="your_wishlist">Your Wishlist<span data-i18n-key="items"><strong data-i18n-key="item_count">2</strong> items</span></div>
                                 <div class="cl_hcw cww"><i class="fa-regular fa-xmark"></i></div>
                             </div>
                             <div class="header-cart_wrap_container fl-wrap">
@@ -137,16 +141,16 @@
                                             <li class="clearfix">
                                                 <a href="#" class="widget-posts-img"><img src="images/all/1.jpg" class="respimg" alt=""></a>
                                                 <div class="widget-posts-descr">
-                                                    <a href="#" title="">Luxary Lexus G350</a>
-                                                    <div class="widget-posts-descr_calc clearfix">1 <span>x</span> $ 500/ per day</div>
+                                                    <a href="#" title="" data-i18n-key="lexus_g350">Luxary Lexus G350</a>
+                                                    <div class="widget-posts-descr_calc clearfix" data-i18n-key="lexus_price">1 <span data-i18n-key="quantity_1">x</span> $ 500/ per day</div>
                                                 </div>
                                                 <div class="clear-cart_button tolt" data-microtip-position="left"  data-tooltip="Remove"><i class="fa-regular fa-trash"></i></div>
                                             </li>
                                             <li class="clearfix">
                                                 <a href="#" class="widget-posts-img"><img src="images/all/1.jpg" class="respimg" alt=""></a>
                                                 <div class="widget-posts-descr">
-                                                    <a href="#" title="">New Honda 350-Z</a>
-                                                    <div class="widget-posts-descr_calc clearfix">2 <span>x</span> $ 200/ per day</div>
+                                                    <a href="#" title=""data-i18n-key="honda_350z">New Honda 350-Z</a>
+                                                    <div class="widget-posts-descr_calc clearfix" data-i18n-key="honda_price">2 <span data-i18n-key="quantity_2">x</span> $ 200/ per day</div>
                                                 </div>
                                                 <div class="clear-cart_button tolt" data-microtip-position="left"  data-tooltip="Remove"><i class="fa-regular fa-trash"></i></div>
                                             </li>
@@ -155,7 +159,7 @@
                                 </div>
                             </div>
                             <div class="header-cart_wrap_footer fl-wrap">
-                                <a href="checkout.html">Proceed to Checkout</a>
+                                <a href="checkout.html"data-i18n-key="proceed_to_checkout">Proceed to Checkout</a>
                             </div>
                         </div>
                         <!-- header-cart_wrap end  -->						
@@ -174,8 +178,8 @@
                                 <div class="container">
                                     <div class="hero-section-container">
                                         <div class="hero-section-title">
-                                            <h2>About Us</h2>
-                                            <h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut nec tincidunt arcu, sit amet fermentum sem.</h5>
+                                            <h2 data-i18n-key="about_us_hero_title">About Us</h2>
+                                            <h5 data-i18n-key="about_us_hero_subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut nec tincidunt arcu, sit amet fermentum sem.</h5>
                                         </div>
                                     </div>
                                 </div>
@@ -192,14 +196,14 @@
                         <div class="container">
                             <!--breadcrumbs-list-->
                             <div class="breadcrumbs-list bl_flat">
-                                <a href="#">หน้าแรก</a><span>เกี่ยวกับเรา</span>
+                                <a href="#" data-i18n-key="home_breadcrumb">หน้าแรก</a><span data-i18n-key="about_us_breadcrumb">เกี่ยวกับเรา</span>
                             </div>
                             <!--breadcrumbs-list end-->							
                             <!--boxed-container-->
                             <div class="boxed-container">
                                 <div class="scroll-content-wrap">
                                     <div class="share-holder init-fix-column">
-                                        <span class="share-title">  Share   </span>
+                                        <span class="share-title" data-i18n-key="share_title">  Share   </span>
                                         <div class="share-container  isShare"></div>
                                     </div>
                                     <div class="boxed-content ">
@@ -208,16 +212,16 @@
                                                 <div class="col-lg-6">
                                                     <div class="abt-wrap-single">
                                                         <div class="about-title ab-hero ab-hero2 ab-hero3">
-                                                            <h2> Our Awesome Story</h2>
-                                                            <h4>Check video presentation to find   out more about us .</h4>
+                                                            <h2 data-i18n-key="our_awesome_story_title"> Our Awesome Story</h2>
+                                                            <h4 data-i18n-key="our_awesome_story_subtitle">Check video presentation to find   out more about us .</h4>
                                                             <i class="fas fa-car"></i>
                                                         </div>
-                                                        <p>Ut euismod ultricies sollicitudin. Curabitur sed dapibus nulla. Nulla eget iaculis lectus. Mauris ac maximus neque. Nam in mauris quis libero sodales eleifend. Morbi varius, nulla sit amet rutrum elementum, est elit finibus tellus, ut tristique elit risus at metus. Sed tempor iaculis massa faucibus feugiat. </p>
-                                                        <p>
+                                                        <p data-i18n-key="about_paragraph_1">Ut euismod ultricies sollicitudin. Curabitur sed dapibus nulla. Nulla eget iaculis lectus. Mauris ac maximus neque. Nam in mauris quis libero sodales eleifend. Morbi varius, nulla sit amet rutrum elementum, est elit finibus tellus, ut tristique elit risus at metus. Sed tempor iaculis massa faucibus feugiat. </p>
+                                                        <p data-i18n-key="about_paragraph_2">
                                                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar. Donec a consectetur nulla. Nulla posuere sapien vitae lectus suscipit, et pulvinar nisi tincidunt. Curabitur convallis fringilla diam sed aliquam. Sed tempor iaculis massa faucibus feugiat. In fermentum facilisis massa, a consequat purus viverra. Aliquam erat volutpat.  
                                                         </p>
                                                         <div class="abt-wrap-footer">	
-                                                            <a href="contacts.html" class="commentssubmit">ติดต่อเรา<i class="fa-solid fa-caret-right"></i></a>
+                                                            <a href="contacts.html" class="commentssubmit" data-i18n-key="contact_us_button">ติดต่อเรา<i class="fa-solid fa-caret-right"></i></a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -236,8 +240,8 @@
                                             <div class="col-lg-4">
                                                 <div class="contacts-card-item">
                                                     <i class="fal fa-headset"></i>
-                                                    <span>บริการ 24 ชั่วโมง</span>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt.</p>
+                                                    <span data-i18n-key="service_24_hours">บริการ 24 ชั่วโมง</span>
+                                                    <p data-i18n-key="service_24_hours_desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt.</p>
                                                     
                                                 </div>
                                             </div>
@@ -246,8 +250,8 @@
                                             <div class="col-lg-4">
                                                 <div class="contacts-card-item">
                                                     <i class="fal fa-users-cog"></i>
-                                                    <span>XXXXXXXXXX</span>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt.</p>
+                                                    <span data-i18n-key="xxxxxxxxx_service">XXXXXXXXXX</span>
+                                                    <p data-i18n-key="xxxxxxxxx_service_desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt.</p>
                                                     
                                                 </div>
                                             </div>
@@ -256,8 +260,8 @@
                                             <div class="col-lg-4">
                                                 <div class="contacts-card-item">
                                                     <i class="fal fa-phone-laptop"></i>
-                                                    <span>XXXXXXXXXX</span>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt.</p>
+                                                    <span data-i18n-key="xxxxxxxxx_support">XXXXXXXXXX</span>
+                                                    <p data-i18n-key="xxxxxxxxx_support_desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt.</p>
                                                     
                                                 </div>
                                             </div>
@@ -272,7 +276,7 @@
                                             <div class="video_section_container">
                                                 <div class="container">
                                                     <div class="video_section-title">
-                                                        <h3>Get ready to start your exciting journey. <br> Our company will lead you through the amazing construction world.</h3>
+                                                        <h3 data-i18n-key="promo_video_title">Get ready to start your exciting journey. <br> Our company will lead you through the amazing construction world.</h3>
                                                     </div>
                                                     <div class="promo-link big_prom     image-popup" id="html5-videos" data-html="#video1"><span class="color-bg"><i class="fas fa-play"></i></span></div>
                                                     <div style="display:none;" id="video1" class="popup_video" data-videolink="video/1.mp4">
@@ -307,7 +311,7 @@
                                         <div class="footer-widget-logo fl-wrap  ">
                                             <img src="images/logo2.png" alt="">
                                         </div>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar. Lorem ipsum dolor sit amet, at fierent atomorum usu, ne sit tota ignota, an interpretaris eirmod vix.</p>
+                                        <p data-i18n-key="footer_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar. Lorem ipsum dolor sit amet, at fierent atomorum usu, ne sit tota ignota, an interpretaris eirmod vix.</p>
                                         <div class="footer-social-wrap">
                                             <a href="#" target="_blank"><i class="fa-brands fa-facebook-f"></i></a> 
                                             <a href="#" target="_blank"><i class="fa-brands fa-x-twitter"></i></a> 
@@ -321,14 +325,14 @@
                                 <!-- footer-widget -->
                                 <div class="col-lg-3">
                                     <div class="footer-widget">
-                                        <div class="footer-widget-title">Navigation</div>
+                                        <div class="footer-widget-title" data-i18n-key="navigation_title">Navigation</div>
                                         <div class="footer-widget-content">
                                             <div class="footer-list footer-box  ">
                                                 <ul>
-                                                    <li><a href="#">หน้าแรก</a></li>
-                                                    <li><a href="#">เกี่ยวกับเรา</a></li>
-                                                    <li><a href="#">ติดต่อเรา</a></li>
-                                                    <li><a href="#">เช่ารถ</a></li>
+                                                    <li><a href="#" data-i18n-key="footer_home">หน้าแรก</a></li>
+                                                    <li><a href="#" data-i18n-key="footer_about_us">เกี่ยวกับเรา</a></li>
+                                                    <li><a href="#" data-i18n-key="footer_contact_us">ติดต่อเรา</a></li>
+                                                    <li><a href="#" data-i18n-key="footer_rent_car">เช่ารถ</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -338,15 +342,15 @@
                                 <!-- footer-widget -->
                                 <div class="col-lg-2">
                                     <div class="footer-widget">
-                                        <div class="footer-widget-title">Our Contacts</div>
+                                        <div class="footer-widget-title" data-i18n-key="our_contacts_title">Our Contacts</div>
                                         <div class="footer-widget-content">
                                             <div class="footer-list footer-box  ">
                                                 <ul  class="footer-contacts  ">
-                                                    <li><span>Mail :</span><a href="#" target="_blank">yourmail@domain.com</a></li>
-                                                    <li> <span>Adress :</span><a href="#" target="_blank">Tokyo</a></li>
-                                                    <li><span>Phone :</span><a href="#">+2(111)123456789</a></li>
+                                                    <li><span data-i18n-key="mail_label">Mail :</span><a href="#" target="_blank">yourmail@domain.com</a></li>
+                                                    <li><span data-i18n-key="address_label">Adress :</span><a href="#" target="_blank">Tokyo</a></li>
+                                                    <li><span data-i18n-key="phone_label">Phone :</span><a href="#">+2(111)123456789</a></li>
                                                 </ul>
-                                                <a href="contacts.html" class="footer-widget-content-link"><span>Get in Touch</span><i class="fa-solid fa-caret-right"></i></a>	
+                                                <a href="contacts.html" class="footer-widget-content-link" data-i18n-key="get_in_touch_button"><span>Get in Touch</span><i class="fa-solid fa-caret-right"></i></a>	
                                             </div>
                                         </div>
                                     </div>
@@ -474,5 +478,6 @@
         <script  src="js/jquery.min.js"></script>
         <script  src="js/plugins.js"></script>
         <script  src="js/scripts.js"></script>
+        <script  src="js/i18n_about.js"></script>
     </body>
 </html>

@@ -365,6 +365,7 @@ blockquote p {
 	background: var(--main-color);
 }
 /*------ Header -----------*/
+
 .main-header {
 	position: absolute;
 	top: 0;
@@ -430,7 +431,8 @@ blockquote p {
 	text-transform: uppercase;
 	top: 50%;
 	transform: translateY(-50%);
-	min-width: 90px;
+	min-width: 150px;
+	font-size: 18px;
 	font-weight: 500;
 }
 .header-social li {
