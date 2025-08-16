@@ -327,69 +327,44 @@ function initCarstate(){
     }
 
     // ----- เรียงรถตามราคา ---------------------
-    $(function () {
-    const $wrap = $('.listing-item').first().parent();
 
-    function sortByPrice(asc) {
-        const sorted = $wrap
-        .children('.listing-item')
-        .get()
-        .sort((a, b) => {
-            const pa = +$(a).find('[data-price]').attr('data-price') || 0;
-            const pb = +$(b).find('[data-price]').attr('data-price') || 0;
-            return asc ? pa - pb : pb - pa;
-        });
-        $wrap.append(sorted); 
-    }
+$(function () {
+  const $wrap = $('.listing-item').first().parent();
 
-    $('#sortSelect').on('change', function () {
-        const asc = $(this).find('option:selected').data('order') === 'asc';
-        sortByPrice(asc);
+  function priceOf(el) {
+    // ระบุ selector ให้ชัดเจนขึ้น กันเผื่อมี [data-price] ตัวอื่นหลงมา
+    const n = el.querySelector('.list-single-opt_header_cat [data-price]');
+    const v = n ? Number(n.getAttribute('data-price')) : NaN;
+    // ไม่มีราคา -> ดันไปท้ายลิสต์
+    return Number.isFinite(v) ? v : Number.POSITIVE_INFINITY;
+  }
+
+  function sortByPrice(asc) {
+    const items = $wrap.children('.listing-item').get()
+      .map((el, idx) => ({ el, price: priceOf(el), idx }));
+    // เสถียร: ถ้าราคาเท่ากัน ให้คงลำดับเดิมตาม idx
+    items.sort((A, B) => {
+      if (A.price === B.price) return A.idx - B.idx;
+      return asc ? A.price - B.price : B.price - A.price;
     });
 
-    $('#sortSelect').trigger('change');
-    });
+    $(items.map(o => o.el)).detach().appendTo($wrap);
+    // ถ้าใช้ปลั๊กอินจัดกริด/เมสันรี ให้เรียก re-layout ที่นี่
+    // $wrap.isotope?.('reloadItems').isotope?.();
+  }
 
-    //   slider car--------------------
-    $(function () {
-    /* 1 : ทำให้ div.bg มีรูปเป็น bg‑image */
-    $('.bg').each(function () {
-        const src = $(this).data('bg');
-        $(this).css({
-        'background-image': 'url(' + src + ')',
-        'background-size': 'cover',
-        'background-position': 'center',
-        'display': 'none'              // ซ่อนทุกภาพไว้ก่อน
-        });
-    });
+  // เคลียร์ handler เก่าที่อาจถูกผูกไว้จากสคริปต์ก่อนหน้า
+  $('#sortSelect').off('change').on('change', function () {
+    // ใช้ value ตรง ๆ: <option value="asc"> / <option value="desc">
+    const order = (this.value || '').toLowerCase().trim();
+    sortByPrice(order === 'asc');
+  });
 
-    /* 2 : กำหนดภาพแรกของแต่ละ listing ให้แสดง */
-    $('.listing-grid-item').each(function () {
-        $(this).find('.bg').first().show();
-        $(this).data('slider-index', 0); // เก็บ index ปัจจุบัน
-    });
+  // เรียกครั้งแรกตามค่าที่เลือกอยู่ใน DOM
+  $('#sortSelect').trigger('change');
+});
 
-    /* 3 : ฟังก์ชันเลื่อนภาพ */
-    function changeSlide($item, dir) {
-        const $imgs = $item.find('.geodir-category-img .bg');
-        let idx = $item.data('slider-index') || 0;
-        idx = (idx + dir + $imgs.length) % $imgs.length; // วนรอบ
-        $imgs.hide().eq(idx).show();
-        $item.data('slider-index', idx);
-    }
 
-    /* 4 : ปุ่มขวา (next) */
-    $(document).on('click', '.fw-carousel-button-next', function (e) {
-        e.preventDefault();
-        changeSlide($(this).closest('.listing-grid-item'), +1);
-    });
-
-    /* 5 : ปุ่มซ้าย (prev) */
-    $(document).on('click', '.fw-carousel-button-prev', function (e) {
-        e.preventDefault();
-        changeSlide($(this).closest('.listing-grid-item'), -1);
-    });
-    });
 
     //   lightGallery------------------
     $(".image-popup , .single-popup-image").lightGallery({
