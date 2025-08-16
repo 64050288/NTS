@@ -4520,7 +4520,7 @@ nav li ul a:before , nav li ul a:after {
 } 
 .geodir-category-content-details li , .post-card-details li {
 	float:left;
-	margin: 0 12px 6px 0;
+	margin: 0 0px 6px 0;
 	padding:2px 20px 2px 4px;
 	background: #f9f9f9;
 	border-radius: 4px;
