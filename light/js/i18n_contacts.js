@@ -1,81 +1,108 @@
 document.addEventListener('DOMContentLoaded', () => {
-    let translations = {};
+  let translations = {};
 
-    // Function to fetch the translation file
-    const fetchTranslations = async () => {
-        // In a real project, this path might be absolute: '/locales/translations.json'
-        const response = await fetch('./locales/translations_contacts.json');
-        if (!response.ok) {
-            console.error('Failed to load translation file.');
-            return;
-        }
-        translations = await response.json();
-    };
+  // โหลดไฟล์คำแปล
+  const fetchTranslations = async () => {
+    const response = await fetch('./locales/translations_contacts.json');
+    if (!response.ok) {
+      console.error('Failed to load translation file.');
+      return;
+    }
+    translations = await response.json();
+  };
 
-    // Function to set the language and update the UI
-    const setLanguage = (lang) => {
-        if (!translations[lang]) {
-            console.error(`Language "${lang}" not found in translations.`);
-            return;
-        }
-        
-        // Update the lang attribute of the <html> tag
-        document.documentElement.lang = lang;
-        // Save the selected language to localStorage
-        localStorage.setItem('language', lang);
+  // ใช้คำแปลกับ element เดียว
+  const applyTranslation = (elem, key, tr) => {
+    // เคสพิเศษ: รายการฟีเจอร์ที่ต้องแตกเป็น <li>
+    if (key === 'features_list') {
+      const listItems = tr.split(',')
+        .map(item => `<li class="ml-4">${item.trim()}</li>`).join('');
+      elem.innerHTML = listItems;
+      return;
+    }
 
-        // Update all elements with the data-i18n-key attribute
-        document.querySelectorAll('[data-i18n-key]').forEach(elem => {
-            const key = elem.getAttribute('data-i18n-key');
-            
-            const translation = translations[lang][key] || key;
-            
-            // Special handling for the features list
-            if (key === 'features_list') {
-                const listItems = translation.split(',').map(item => `<li class="ml-4">${item.trim()}</li>`).join('');
-                elem.innerHTML = listItems;
-            } else {
-                elem.textContent = translation;
-            }
-        });
-        
-        // Update the page title
-        const pageKey = document.body.getAttribute('data-i18n-page-key');
-        if (pageKey && translations[lang][pageKey]) {
-             document.title = translations[lang][pageKey];
-        }
+    // อนุญาตระบุปลายทางผ่าน data-i18n-attr (เช่น placeholder, title, html, value)
+    const explicitAttr = elem.getAttribute('data-i18n-attr');
+    if (explicitAttr) {
+      if (explicitAttr.toLowerCase() === 'html') {
+        elem.innerHTML = tr;
+      } else {
+        elem.setAttribute(explicitAttr, tr);
+      }
+      return;
+    }
 
-        // Update the active state of language buttons
-        document.querySelectorAll('.lang-btn').forEach(btn => {
-            btn.classList.toggle('active', btn.dataset.lang === lang);
-        });
+    // เดาฟิลด์ให้อัตโนมัติ
+    const tag = elem.tagName;
+    if (tag === 'INPUT' || tag === 'TEXTAREA') {
+      elem.setAttribute('placeholder', tr); // << สำคัญ: เปลี่ยน placeholder
+      return;
+    }
+    if (tag === 'IMG') {
+      elem.setAttribute('alt', tr);
+      return;
+    }
+    if (tag === 'BUTTON') {
+      // เก็บไอคอนเดิมไว้
+      const icons = Array.from(elem.querySelectorAll('i,svg'));
+      elem.textContent = tr;
+      icons.forEach(ic => elem.appendChild(ic));
+      return;
+    }
 
-        // Update the active state of navigation links
-        const currentPage = window.location.pathname.split('/').pop().replace('.html', '') || 'contacts';
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.classList.toggle('active', link.dataset.page === currentPage);
-        });
-    };
+    // อื่น ๆ ใช้เป็นข้อความปกติ
+    elem.textContent = tr;
+  };
 
-    // Main initialization function
-    const init = async () => {
-        await fetchTranslations();
-        
-        // Get the saved language or default to 'en'
-        const savedLang = localStorage.getItem('language') || 'en';
-        setLanguage(savedLang);
+  // ตั้งภาษาและอัปเดต UI
+  const setLanguage = (lang) => {
+    if (!translations[lang]) {
+      console.error(`Language "${lang}" not found in translations.`);
+      return;
+    }
 
-        // Add event listener to the language switcher
-        const langSwitcher = document.getElementById('lang-switcher');
-        if (langSwitcher) {
-            langSwitcher.addEventListener('click', (e) => {
-                const selectedLang = e.target.dataset.lang;
-                if (selectedLang) {
-                    setLanguage(selectedLang);
-                }
-            });
-        }
-    };
+    document.documentElement.lang = lang;
+    localStorage.setItem('language', lang);
 
-    init();
+    // ใส่คำแปลให้ทุก element ที่มี data-i18n-key
+    document.querySelectorAll('[data-i18n-key]').forEach(elem => {
+      const key = elem.getAttribute('data-i18n-key');
+      const tr = translations[lang][key] ?? key;
+      applyTranslation(elem, key, tr);
+    });
+
+    // title หน้า (ถ้าระบุคีย์ไว้ใน body)
+    const pageKey = document.body.getAttribute('data-i18n-page-key');
+    if (pageKey && translations[lang][pageKey]) {
+      document.title = translations[lang][pageKey];
+    }
+
+    // ปุ่มสลับภาษา active
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.lang === lang);
+    });
+
+    // ลิงก์เมนู active ตามหน้า
+    const currentPage = window.location.pathname.split('/').pop().replace('.html', '') || 'contacts';
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.classList.toggle('active', link.dataset.page === currentPage);
+    });
+  };
+
+  // init
+  const init = async () => {
+    await fetchTranslations();
+    const savedLang = localStorage.getItem('language') || 'en';
+    setLanguage(savedLang);
+
+    const langSwitcher = document.getElementById('lang-switcher');
+    if (langSwitcher) {
+      langSwitcher.addEventListener('click', (e) => {
+        const selectedLang = e.target.dataset.lang;
+        if (selectedLang) setLanguage(selectedLang);
+      });
+    }
+  };
+
+  init();
 });
