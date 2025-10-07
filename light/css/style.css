@@ -305,7 +305,7 @@ blockquote p {
 	width:100%;
 	height:100%;
 	background:#000;
- 	opacity:.3;
+ 	opacity:.2;
 	z-index: 2
 }
 .fs-wrapper {
@@ -383,6 +383,7 @@ blockquote p {
 	height: 90px;
 	float: left;
 	width: 100%;
+	margin-top: 2vh;
  	border-radius: 4px;
 	background: #fbfbfa;
  	border-bottom: 1px solid #fbfbfa;
@@ -554,8 +555,8 @@ blockquote p {
 }
 
 /* ปุ่มที่เป็นภาษาปัจจุบัน = ไฮไลต์และกดไม่ได้ */
-html[lang="en"] #lang-switcher .lang-btn[data-lang="en"],
-html[lang="th"] #lang-switcher .lang-btn[data-lang="th"]{
+html[lang="th"] #lang-switcher .lang-btn[data-lang="th"],
+html[lang="en"] #lang-switcher .lang-btn[data-lang="en"]{
   color:#a9ccff;
   font-weight:700;
   pointer-events:none;   /* กันการกดซ้ำ */
@@ -2386,7 +2387,7 @@ nav li ul a:before , nav li ul a:after {
     bottom: 0;
     right: 0;
     z-index: 20;
-    background: rgba(0, 0, 0,  .5);
+    background: rgba(0, 0, 0,  .2);
 }
 .hero-section-wrap {
  	z-index: 4;
@@ -7333,7 +7334,7 @@ nav li ul a:before , nav li ul a:after {
 	width: 100px;
 } 
 .wrapper {
-    margin-top:150px;
+    margin-top:20vh;
 	overflow: hidden;
 }
 .header-top {

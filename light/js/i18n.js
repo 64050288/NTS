@@ -62,7 +62,8 @@ document.addEventListener('DOMContentLoaded', () => {
         await fetchTranslations();
         
         // Get the saved language or default to 'en'
-        const savedLang = localStorage.getItem('language') || 'en';
+        const savedLang = 'th';
+        //const savedLang = localStorage.getItem('language') || 'th';
         setLanguage(savedLang);
 
         // Add event listener to the language switcher

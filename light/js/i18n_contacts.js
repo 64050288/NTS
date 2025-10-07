@@ -92,7 +92,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // init
   const init = async () => {
     await fetchTranslations();
-    const savedLang = localStorage.getItem('language') || 'en';
+    //const savedLang = localStorage.getItem('language') || 'th';
+    const savedLang = 'th';
     setLanguage(savedLang);
 
     const langSwitcher = document.getElementById('lang-switcher');

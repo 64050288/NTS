@@ -87,7 +87,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const init = async () => {
     await fetchTranslations();
 
-    const savedLang = localStorage.getItem('language') || 'en';
+    const savedLang = 'th';
+    //const savedLang = localStorage.getItem('language') || 'th';
     setLanguage(savedLang);
 
     // เผื่อธีม/สคริปต์อื่นยังไม่ได้ init Chosen ให้เราจัดการหลังตั้งภาษา
