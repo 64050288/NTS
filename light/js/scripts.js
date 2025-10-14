@@ -549,12 +549,14 @@ function initCarstate(){
     $(".nav-button-wrap").on("click", function () {
         $(".main-menu").toggleClass("vismobmenu");
         $(this).toggleClass("vis_nbwc");
-        $('.mob-nav-overlay').fadeToggle(200);
+        $('.mob-nav-overlay')
+        // $('.mob-nav-overlay').fadeToggle(200);
     });
     $(".mob-nav-overlay").on("click", function () {
         $(".main-menu").removeClass("vismobmenu");
         $(".nav-button-wrap").removeClass("vis_nbwc");
-        $(this).fadeOut(200);
+        $(this)
+        // $(this).fadeOut(200);
     });
     function mobMenuInit() {
         var ww = $(window).width();
