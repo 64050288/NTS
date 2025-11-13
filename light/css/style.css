@@ -324,6 +324,9 @@ blockquote p {
 	z-index: 1;
 	padding-bottom: 50px;
 }
+.mobile-logo-text {
+    display: none;
+}
 .content-dec_ver {
 	position: absolute;
 	bottom: 0;
@@ -665,6 +668,7 @@ html[lang="en"] #lang-switcher .lang-btn[data-lang="en"]{
 	position:relative;
 	float: right;
 }
+
 .nav-holder nav:before , .nav-holder nav:after {
 	content: '';
 	position: absolute;
@@ -7326,6 +7330,7 @@ nav li ul a:before , nav li ul a:after {
 .header-inner , .header-search-btn , .wish_btn {
     height: 80px;
 }
+
 .header-inner {
    border-radius: 0;
 }	
@@ -7344,6 +7349,20 @@ nav li ul a:before , nav li ul a:after {
 .header-search-btn , .wish_btn {
     line-height: 80px;
 }	
+.mobile-logo-text {
+        display: inline-block;
+        font-size: 24px;      /* ขนาดตัวอักษร (ปรับได้ตามชอบ) */
+        font-weight: bold;    /* ทำให้เป็นตัวหนา */
+        color: var(--black-color);          /* สีข้อความ (สีขาวเพื่อให้เข้ากับไอคอนเมนู) */
+        text-decoration: none;
+        
+        /* * จัดให้อยู่กึ่งกลางแนวตั้ง 
+         * (ใช้ค่า padding และ line-height ให้ใกล้เคียงกับโลโก้เดิม) 
+         */
+        padding-top: -2px;
+		padding-left: 10px;
+        line-height: 50px; 
+}
 .nav-button-wrap {
 	float:right;
 	height:80px;
